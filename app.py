@@ -5,7 +5,7 @@ import numpy as np
 app = Flask(__name__)
 
 # Load the trained model
-model = joblib.load('fish_weight_model.pkl')
+model = joblib.load('data/fish_weight_model.pkl')
 
 @app.route('/')
 def home():
