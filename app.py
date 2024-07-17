@@ -9,6 +9,9 @@ app = Flask(__name__)
 model_path = os.path.join('data', 'fish_weight_model.pkl')
 model = joblib.load(model_path)
 
+port = int(os.environ.get('PORT', 5000))
+
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -32,5 +35,5 @@ def predict():
         return str(e)
 
 if __name__ == '__main__':
-    app.run(port=int(os.environ.get('PORT', 5000)))
+    app.run(host='0.0.0.0', port=port)
 
