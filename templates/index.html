@@ -42,6 +42,12 @@
         <div class="result">
             {% if prediction_text %}
                 <h2>{{ prediction_text }}</h2>
+                <h3>Input Values:</h3>
+                <ul>
+                    {% for key, value in input_values.items() %}
+                        <li>{{ key }}: {{ value }}</li>
+                    {% endfor %}
+                </ul>
             {% endif %}
         </div>
     </div>

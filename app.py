@@ -16,9 +16,15 @@ def predict():
     features = [float(x) for x in request.form.values()]
     final_features = [np.array(features)]
     prediction = model.predict(final_features)
-    output = round(prediction[0], 2)
+    output = round(abs(prediction[0]), 2)  # Using abs() to ensure non-negative prediction
 
-    return render_template('index.html', prediction_text='Predicted Fish Weight: {} grams'.format(output))
+    input_values = dict(request.form)  # Capture input values
+
+    return render_template(
+        'index.html',
+        prediction_text=f'Predicted Fish Weight: {output} grams',
+        input_values=input_values  # Pass input values to the template
+    )
 
 if __name__ == "__main__":
     app.run(debug=True)
